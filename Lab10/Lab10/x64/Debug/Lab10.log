@@ -1,2 +1,14 @@
 ﻿  task2.cpp
+C:\Users\Hammad Ishtiaq\source\all_dsa\DSALabsAssignment\Lab10\Lab10\task2.cpp(296,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Hammad Ishtiaq\source\all_dsa\DSALabsAssignment\Lab10\Lab10\task2.cpp(285): message : while compiling class template member function 'void BST<int>::printTree(BSTNode<T> *)'
+          with
+          [
+              T=int
+          ]
+C:\Users\Hammad Ishtiaq\source\all_dsa\DSALabsAssignment\Lab10\Lab10\task2.cpp(365): message : see reference to function template instantiation 'void BST<int>::printTree(BSTNode<T> *)' being compiled
+          with
+          [
+              T=int
+          ]
+C:\Users\Hammad Ishtiaq\source\all_dsa\DSALabsAssignment\Lab10\Lab10\task2.cpp(345): message : see reference to class template instantiation 'BST<int>' being compiled
   Lab10.vcxproj -> C:\Users\Hammad Ishtiaq\source\all_dsa\DSALabsAssignment\Lab10\x64\Debug\Lab10.exe

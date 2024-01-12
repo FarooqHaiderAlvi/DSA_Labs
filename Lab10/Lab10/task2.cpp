@@ -193,7 +193,7 @@ public:
 		return height;
 	}
 
-	BSTNode<T>* getMirror() {
+	BST<T> getMirror() {
 
 		stack<BSTNode<T>*> st;
 		BSTNode<T>* temp = root;
@@ -216,14 +216,133 @@ public:
 						st.push(temp->left);
 				}
 
-				return root;
+				return *this;
 	}
+
+	bool isEqual(BSTNode<T>* r1, BSTNode<T>* r2) {
+
+
+		stack<BSTNode<T>*> st1;
+		stack<BSTNode<T>*> st2;
+		BSTNode<T>* temp1 = r1;
+		BSTNode<T>* temp2 = r2;
+		st1.push(temp1);
+		st2.push(temp2);
+
+
+		while (!st1.empty() && !st2.empty()) {
+			temp1 = st1.top();
+			temp2 = st2.top();
+			st1.pop();
+			st2.pop();
+
+
+			if (temp1->data != temp2->data)
+				return false;
+
+
+			if (temp1->right)
+				st1.push(temp1->right);
+
+			if (temp1->left)
+				st1.push(temp1->left);
+
+			if (temp2->right)
+				st2.push(temp2->right);
+
+			if (temp2->left)
+				st2.push(temp2->left);
+		}
+
+		if (!st1.empty() || !st2.empty())
+			return false;
+
+		return true;
+
+	}
+
+
+	//bool areEqual(BSTNode<T>* root1, BSTNode<T>* root2) {
+	//	// If both trees are empty, they are equal.
+	//	if (root1 == nullptr && root2 == nullptr) {
+	//		return true;
+	//	}
+
+	//	// If one of the trees is empty and the other is not, they are not equal.
+	//	if (root1 == nullptr || root2 == nullptr) {
+	//		return false;
+	//	}
+
+	//	// Check if the values of the current nodes are equal.
+	//	if (root1->val != root2->val) {
+	//		return false;
+	//	}
+
+	//	// Recursively check the left and right subtrees.
+	//	return areEqual(root1->left, root2->left) && areEqual(root1->right, root2->right);
+	//}
+
+	void printTree(BSTNode<T>* root) {
+
+		
+		if (root == nullptr) {
+			return;
+		}
+
+		std::queue<BSTNode<T>*> q;
+		q.push(root);
+
+		while (!q.empty()) {
+			int levelSize = q.size();
+
+			for (int i = 0; i < levelSize; ++i) {
+				BSTNode<T>* current = q.front();
+				q.pop();
+
+				if (current != nullptr) {
+					std::cout << current->data;
+
+					if (current->left || current->right) {
+						q.push(current->left);
+						q.push(current->right);
+					}
+				}
+				else {
+					std::cout << " ";
+				}
+
+				if (i < levelSize - 1) {
+					std::cout << " ";
+				}
+			}
+
+			std::cout << std::endl;
+
+			// Add spaces and print connecting lines
+			int spaces = 2;
+			for (int i = 0; i < levelSize; ++i) {
+				if (i % 2 == 0) {
+					std::cout << " ";
+				}
+				else {
+					std::cout << "/";
+				}
+				for (int j = 0; j < spaces - 1; ++j) {
+					std::cout << " ";
+				}
+			}
+			std::cout << std::endl;
+		}
+	}
+
+
+
 };
 
 
 
 int main() {
-	BST<int> tree;
+	BST<int> tree1;
 	/*tree.insertion(10);
 	tree.insertion(7);
 	tree.insertion(15);
@@ -236,12 +355,16 @@ int main() {
 //	tree.dispAnces(16);
 	//cout << tree.getHeight();
 
-	tree.insertion(5);
-	tree.insertion(3);
-	tree.insertion(6);
-	tree.insertion(2);
-	tree.insertion(4);
-	tree.insertion(1);
+	for (int i = 0; i < 5; i++)
+		tree1.insertion(i);
+
+	for (int i = -1; i >-5; i--)
+		tree1.insertion(i);
+
+	
+	tree1.printTree(tree1.returnRoot());
+ 
+	
 
 	
 }
