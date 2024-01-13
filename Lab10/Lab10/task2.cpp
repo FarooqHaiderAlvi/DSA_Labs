@@ -261,78 +261,63 @@ public:
 
 	}
 
-
-	//bool areEqual(BSTNode<T>* root1, BSTNode<T>* root2) {
-	//	// If both trees are empty, they are equal.
-	//	if (root1 == nullptr && root2 == nullptr) {
-	//		return true;
-	//	}
-
-	//	// If one of the trees is empty and the other is not, they are not equal.
-	//	if (root1 == nullptr || root2 == nullptr) {
-	//		return false;
-	//	}
-
-	//	// Check if the values of the current nodes are equal.
-	//	if (root1->val != root2->val) {
-	//		return false;
-	//	}
-
-	//	// Recursively check the left and right subtrees.
-	//	return areEqual(root1->left, root2->left) && areEqual(root1->right, root2->right);
-	//}
-
-	void printTree(BSTNode<T>* root) {
-
-		
-		if (root == nullptr) {
-			return;
+	bool areEqual(BSTNode<T>* root1, BSTNode<T>* root2) {
+		// If both trees are empty, they are equal.
+		if (root1 == nullptr && root2 == nullptr) {
+			return true;
 		}
 
-		std::queue<BSTNode<T>*> q;
-		q.push(root);
-
-		while (!q.empty()) {
-			int levelSize = q.size();
-
-			for (int i = 0; i < levelSize; ++i) {
-				BSTNode<T>* current = q.front();
-				q.pop();
-
-				if (current != nullptr) {
-					std::cout << current->data;
-
-					if (current->left || current->right) {
-						q.push(current->left);
-						q.push(current->right);
-					}
-				}
-				else {
-					std::cout << " ";
-				}
-
-				if (i < levelSize - 1) {
-					std::cout << " ";
-				}
-			}
-
-			std::cout << std::endl;
-
-			// Add spaces and print connecting lines
-			int spaces = 2;
-			for (int i = 0; i < levelSize; ++i) {
-				if (i % 2 == 0) {
-					std::cout << " ";
-				}
-				else {
-					std::cout << "/";
-				}
-				for (int j = 0; j < spaces - 1; ++j) {
-					std::cout << " ";
-				}
-			}
-			std::cout << std::endl;
+		// If one of the trees is empty and the other is not, they are not equal.
+		if (root1 == nullptr || root2 == nullptr) {
+			return false;
 		}
+
+		// Check if the values of the current nodes are equal.
+		if (root1->data != root2->data) {
+			return false;
+		}
+
+		// Recursively check the left and right subtrees.
+		return areEqual(root1->left, root2->left) && areEqual(root1->right, root2->right);
+	}
+
+	void countNodesAtEachLevel() {
+
+		queue<BSTNode<T>*> q;
+
+		BSTNode<T>* temp = root;
+		int count = 0;
+
+		if (temp) {
+			q.push(temp);
+			while (!q.empty()) {
+
+				int levelSize = q.size();
+				cout << "nodes count at level " << count << ":: " << levelSize << "; and nodes data  " ;
+				
+				
+				for (int i = 0; i < levelSize; i++) {
+					temp = q.front();
+					q.pop();
+					cout << temp->data << " ";
+					if (temp->left)
+						q.push(temp->left);
+					if (temp->right)
+						q.push(temp->right);
+				}
+
+				
+				cout << endl;
+
+				count++;
+
+
+			}
+		}
+
+
+
+
 	}
 
 
@@ -342,27 +327,21 @@ public:
 
 
 int main() {
-	BST<int> tree1;
-	/*tree.insertion(10);
+	BST<int> tree;
+	tree.insertion(10);
 	tree.insertion(7);
 	tree.insertion(15);
 	tree.insertion(5);
 	tree.insertion(8);
 	tree.insertion(11);
-	tree.insertion(16);*/
+	 
 
 //	tree.levelOrderTraversal();
 //	tree.dispAnces(16);
 	//cout << tree.getHeight();
-
-	for (int i = 0; i < 5; i++)
-		tree1.insertion(i);
-
-	for (int i = -1; i >-5; i--)
-		tree1.insertion(i);
-
+//	tree.countNodesAtEachLevel();
 	
-	tree1.printTree(tree1.returnRoot());
+ 
  
 	
 
