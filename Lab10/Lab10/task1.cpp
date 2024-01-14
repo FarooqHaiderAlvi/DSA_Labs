@@ -1,16 +1,19 @@
 //#include <iostream>
-//using namespace std;
 //#include <cmath>
 //#include <stack>
 //#include <queue>
+//using namespace std;
 //
 //template<class T>
 //class BinaryTree {
+//
 //private:
 //	int size;
 //	T* data;
 //	bool* status;
+//
 //public:
+//
 //	BinaryTree(int h) {
 //		size = pow(2, h)-1;
 //		data = new int[size];
@@ -24,6 +27,7 @@
 //				status[i] = true;
 //		}
 //	}
+//
 //	void setRoot(T val) {
 //		if (!status[0]) {
 //			data[0] = val;
@@ -31,6 +35,7 @@
 //		}
 //			
 //	}
+//
 //	void setLeftChild(T parent, T val) {
 //
 //		int child = parent * 2 + 1;
@@ -42,6 +47,7 @@
 //			cout << "index goes out of bound or parent not found::" << endl;
 //		}
 //	}
+//
 //	void setRightChild(T parent, T val) {
 //
 //		int child = parent * 2 + 2;
@@ -55,7 +61,6 @@
 //	}
 //
 //	int getParent(int node) {
-//
 //		int parent = 0;
 //		if (node % 2 == 0)
 //			parent = (node - 2) / 2;
@@ -92,7 +97,6 @@
 //		else return -1;
 //	}
 //
-//
 //	void removeDesc(int node) {
 //		stack<int> stak;
 //
@@ -109,11 +113,8 @@
 //				stak.push(right);
 //
 //				if (left < size && data[left])
-//					stak.push(left);
-//								
+//					stak.push(left);					
 //		}
-//
-//
 //	}
 //
 //	void printAnces(int index) {
@@ -130,7 +131,6 @@
 //		}
 //
 //	}
-//
 //
 //	bool isPerfect(int index) {
 //		int left = index * 2 + 1;
@@ -156,8 +156,6 @@
 //			if (!isPerfect(left) || !isPerfect(right))
 //				return false;
 //	   }
-//
-//		
 //
 //		return true;
 //	}
@@ -188,17 +186,10 @@
 //				q.push(right > 0? right : -1);
 //			}
 //
-//
-//				
-//
 //		}
 //			return true;
 //	}
-//
-//	/*int height(Node* root) {
-//		if (root == nullptr) return 0;
-//		return max(height(root->left), height(root->right)) + 1;
-//	}*/
+//	
 //};
 //int main() {
 //	BinaryTree<int> tree(4);
